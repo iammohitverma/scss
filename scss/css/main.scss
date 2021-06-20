@@ -1,0 +1,139 @@
+@import "_var.scss";
+@import "_mixins.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+
+// Operators + - / * work without calc now in scss.
+
+// Variable don't need to define var as on root like --var(your-variable) now Use as we use on PHP $yourVar : yourVarCssValue;.
+
+// NESTING you can see below card > h2, p, a.
+
+// Mixin we can use a set of code at multiple places multiple times like reusable Code for shorting our css.
+
+// Extend in Scss we can use extent to maintain DRY (Don't Repeat YourSelf).
+
+// Partials create separate file paste your Variables Mixins there
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bodyBg;
+}
+.container {
+  max-width: 1320px;
+  padding: 0 12px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row {
+  margin: 0 -12px;
+}
+
+.col {
+  padding: 0 12px;
+}
+
+// can use parameter under created mixin then passed an argument at where you call the mixin.
+// @mixin commonTransition($transi: 0.5s) ($transi: 0.5s)  is the default value when don't pass an argument for param of mixin.
+
+.card {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 50px;
+  background: #fff;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.07);
+  position: relative;
+  border-radius: 10px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    top: 0 - 70px;
+    right: 0 - 70px;
+    background: #2280d20f;
+    z-index: -1;
+    border-radius: 50%;
+  }
+
+  h2 {
+    font-weight: 400;
+    font-size: 38px;
+    color: hsl(208deg, 10%, 41%);
+    margin-bottom: 40px;
+    line-height: 1;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 70px;
+      height: 3px;
+      background: #2280d2;
+      left: 0;
+      bottom: -20px;
+      border-radius: 45px;
+    }
+  }
+
+  p {
+    color: #5e6973b0;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  a {
+    @include commonTransition(0.3s);
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    background: #2280d2;
+    padding: 20px 40px;
+    margin-top: 30px;
+    border-radius: 5px;
+
+    &:hover {
+      background: hsl(208deg, 92%, 18%);
+    }
+  }
+}
+
+// now box class is only with first box div now if we want to use same css for second and third box without using box class then use extend in scss
+.box {
+  background-color: #f44336;
+  width: 200px;
+  height: 200px;
+  border: 10px solid #fff;
+  float: left;
+  margin: 30px;
+  box-shadow: 0 0 20px rgba(193, 193, 193, 20%);
+}
+
+.first {
+  background-color: antiquewhite;
+}
+
+.second {
+  @extend .box;
+  background-color: aquamarine;
+}
+
+.three {
+  @extend .box;
+  background-color: aqua;
+}

@@ -1,0 +1,7 @@
+@mixin commonTransition($transi: 0.5s) {
+  transition: $transi;
+  -webkit-transition: $transi;
+  -moz-transition: $transi;
+  -ms-transition: $transi;
+  -o-transition: $transi;
+}
