@@ -1,0 +1,115 @@
+// set custom scrollbar
+@include customScrollbar($selector: ".sidebar");
+
+.sidebar {
+  position: relative;
+  width: 60px;
+  max-width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $white;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: .5s;
+
+  &.active{
+    width: 300px;
+  }
+
+  .logo {
+    position: relative;
+    @include font($size: 32px, $weight: 600);
+    @include flex($justifyContent: flex-start, $flexWrap: nowrap);
+    color: $black;
+
+    i {
+      position: relative;
+      @include boxIconSet();
+      @include flex();
+    }
+  }
+
+  .nav-wrap {
+    position: relative;
+    height: calc(100% - 60px);
+    @include flex($justifyContent: space-between, $flexDirection: column, $flexWrap: nowrap);
+
+    nav {
+      position: relative;
+      width: 100%;
+      @include margin(top, 60px);
+      @include margin(bottom, 60px);
+
+      ul {
+        position: relative;
+
+        li {
+          position: relative;
+
+          a {
+            position: relative;
+            color: $black;
+            @include flex($justifyContent: flex-start, $flexWrap: nowrap);
+            @include font($size: 20px, $weight: 500);
+            white-space: nowrap;
+
+            i {
+              @include boxIconSet();
+              @include flex();
+
+              ion-icon {
+                width: 30px;
+                height: 30px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .bottom {
+      position: relative;
+      width: 100%;
+
+      .profile {
+        position: relative;
+        @include flex($justifyContent: flex-start, $flexWrap: nowrap);
+        white-space: nowrap;
+
+        .img-bx {
+          position: relative;
+          @include boxIconSet(60px);
+          @include borderRadius(circle);
+          @include margin(right, 10px);
+          border: 10px solid $white;
+
+          img {
+            @include imgCover();
+          }
+        }
+
+        h3 {
+          position: relative;
+          @include font();
+        }
+      }
+
+      .toggle {
+        position: relative;
+        @include btnSet();
+        @include margin(top, 20px);
+
+        i {
+          position: relative;
+          @include boxIconSet();
+          @include flex();
+
+          ion-icon {
+            width: 30px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}

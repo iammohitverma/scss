@@ -1,0 +1,120 @@
+// font
+@mixin font($weight: 400, $size: 16px, $lineHeight: 1, $family: "Poppins") {
+  font: $weight $size / $lineHeight $family;
+}
+
+// flex
+@mixin flex(
+  $alignItems: center,
+  $justifyContent: center,
+  $flexWrap: wrap,
+  $flexDirection: row
+) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+  flex-wrap: $flexWrap;
+  flex-direction: $flexDirection;
+}
+
+// margin
+@mixin margin($position: null, $px) {
+  @if ($position != null) {
+    margin-#{$position}: $px;
+  } @else {
+    margin: $px;
+  }
+}
+
+// padding
+@mixin padding($position: null, $px) {
+  @if ($position != null) {
+    padding-#{$position}: $px;
+  } @else {
+    padding: $px;
+  }
+}
+
+// sidebar-icon
+@mixin boxIconSet($boxSize: 60px) {
+  width: $boxSize;
+  min-width: $boxSize;
+  height: $boxSize;
+  overflow: hidden;
+}
+
+// border radius
+@mixin borderRadius($px: 10px) {
+  @if ($px == circle) {
+    border-radius: 50%;
+  } @else {
+    border-radius: $px;
+  }
+}
+
+// imgCover
+@mixin imgCover() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// btn set
+@mixin btnSet() {
+  background-color: $white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+// custom scrollbar
+@mixin customScrollbar($selector) {
+  #{$selector}::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+  }
+  #{$selector}::-webkit-scrollbar-thumb {
+    background-color: #000000;
+  }
+  #{$selector}::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #f5f5f5;
+  }
+}
+
+// Media queries for responsiveness
+@mixin responsive($breakpoint) {
+  @if ($breakpoint == big_desktop) {
+    @media (max-width: 1399.98px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == desktop) {
+    @media (max-width: 1199.98px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == tab_land) {
+    @media (max-width: 991.98px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == tab_port) {
+    @media (max-width: 767.98px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == mobile_land) {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+  @if ($breakpoint == mobile) {
+    @media (max-width: 479.98px) {
+      @content;
+    }
+  }
+}
